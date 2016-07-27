@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+<title>Page Unavailable</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;/*font-size:100%;font:inherit;vertical-align:baseline;*/}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+body{/*font-size:14px;*/line-height:1.2;}
+ol,ul{list-style:none;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+
+@font-face {
+	font-family:"intel-clear";
+	font-style:normal;
+	font-weight:normal;
+	src: url("http://failover.intel.com/failover/test/fonts/intel-clear-latin.woff") format("woff"), url("http://failover.intel.com/failover/test/fonts/intel-clear-latin.ttf") format("truetype");
+}
+
+body,td,th {
+	font-family:"intel-clear",Arial,Helvetica,sans-serif;
+	background-color:#f3f3f3;
+}
+html,body {
+	color:#666666;
+	background-color:#f3f3f3;
+	min-height:100%;
+}
+body > * > .inner {
+	margin:0 auto;
+	width:960px;
+}
+#header .links,#footer .links {
+	float:right;
+}
+#header .links a,#footer .links a {
+	color:#ffffff;
+	text-decoration:none;
+	margin-left:23px;
+	vertical-align:top;
+}
+
+#header {
+	background-color:#0071c5;
+	height:61px;
+	font-size:12px;
+	color:#ffffff;
+	position:fixed;
+	left:0;
+	right:0;
+	top:0;
+}
+#header img {
+	margin:9px 0;
+	vertical-align:top;
+}
+#header .links {
+	margin-top:24px;
+}
+#footer {
+	background-color:#0071c5;
+	font-size:12px;
+	color:#ffffff;
+	position:fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	padding:5px 0;
+}
+
+#content {
+	width:100%;
+	padding:0 0 61px 0;
+}
+#content > .inner {
+	margin:0 auto;
+	padding:60px 40px 40px;
+	background: none right bottom no-repeat;
+	background-color:#ffffff;
+	width:880px;
+}
+#content .inner h3 {
+	font-weight:normal;
+	margin-bottom:12px;
+}
+#content .explain > div {
+	padding-bottom:3px;
+}
+#content .explain {
+	margin-bottom:51px;
+}
+#content .explain .title {
+	color:#0071c5;
+	font-size:30px;
+	margin:20px 0 10px 0;
+	font-weight:normal;
+}
+
+#content a {
+	color:#0071c5;
+	text-decoration:none;
+}
+#content .links ul {
+	display:inline-block;
+	margin-right:20px;
+	width:350px;
+}
+#content .links li {
+	border-bottom:1px solid #d7d7d7;
+	
+}
+#content .links li.first {
+	border-top:1px solid #d7d7d7;
+}
+#content .links ul a {
+	line-height:43px;
+}
+
+#content .base-links li {padding-bottom:10px; }
+
+#content .footnote {
+	width:960px;
+	margin:0 auto;
+	padding:10px 0;
+	font-size:9px;
+}
+span.br {
+	display:block;
+}
+@media (max-width:980px) {
+	#header,
+	#content,
+	#footer {
+		padding-left:10px;
+		padding-right:10px;
+		width:auto;
+	}
+	#header > .inner,
+	#content > .inner,
+	#footer > .inner {
+		width:auto;
+	}
+}
+@media (max-width:640px) {
+	#content {
+		padding-left:0;
+		padding-right:0;
+		width:auto;
+	}
+	body,#header,#footer {
+		font-size:13pt;
+	}
+	#content .explain .title {
+		font-size:18pt;
+	}
+	#content > .inner {
+		padding:71px 10px 10px;
+	}
+	#content .footnote {
+		padding:10px;
+		width:auto;
+	}
+}
+@media (max-width: 560px) {
+	span.br {
+		display:inline;
+	}
+	span.error {
+		display:block;
+	}
+	#footer .links a,
+	#header .links a {
+		display:block;
+	}
+	#footer .links a + a,
+	#header .links a + a {
+		margin-top:5px;
+	}
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+var wapLocalCode = 'us-en';
+var wap_tms={site:"profile-microsite"};var utag_data={wa_local:wapLocalCode,wa_section:"failover",wa_env:(location.host=="failover.intel.com")?"dev":"prod"};wap_tms.url="//tags.tiqcdn.com/utag/intel/"+wap_tms.site+"/"+utag_data.wa_env+"/utag.js";(function(f,e,h,g){f=wap_tms.url;e=document;h="script";g=e.createElement(h);g.src=f;g.type="text/java"+h;g.async=true;f=e.getElementsByTagName(h)[0];f.parentNode.insertBefore(g,f)})();
+</script>
+<div id="header">
+	<div class="inner">
+		<a href="http://www.intel.com/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAArCAYAAADIWo5HAAAC3UlEQVR42uWabbHsIAyGrwQkVEIlIKESKqEScFAJSKgEJFRCJSCBuz/eMyeTyZIChy33nsy8P3bpB3kSArT9k1IaTZbICVpJu2m939OObi/5l0Kqt4jz95cWQBkSwIwIhtTfDsB4HMCMyFxJtgtAHGSh6cYQWTWguP76aQDmpU10Gs6K47ddFrDjGxC2KwBEzQs33kk6fkrrmwBsOoB2xyN+zwPMKE6A4BmAplTfWXqvA06rM4IiZkIzXSXaI0OY2wDwaj2+LC/IJQAMW6FNg0U3EM3kf88Kn+dZUEvPDRtZTHekPp0EysSO3VW6nQAEorUTAIdxf7E1x0mHgTaXhk4AqLkeAKCZOY/MgOWcR/uh1ICxAchyGoCFLGjMDQBWkVEAeHKsuIEimnsDmMh8ae8VQdmUKMvGK7tsAVC7AAgs9dsByB2TjQYhbycgFANgYCNP/S+bagCwre3B2g7tHN5BmH+z7XUVAAzvE2286GahEoDL0A7KOdI8vWWud1UAcPz6UvSXBwGsiRrSPNdeAMAIQ8vwJWLE76cAuFRmtgAAH5L+ey/wTSb8pwA2dkz8qnN83LnBADhFkwoAzueeB9iBACw3omluLoQMTXue+iMBOEgq80J1Mggr2rcbAILivAKA6YcBnEmwwjqwk+tFFQCc1wD4DAD/gwAWZSnsFecj20a7DIBIpnYVwJUBYMge293c2++kbReG1cHO53P+KTju3+xGLXs+uaOfRn0xIj0s/C2SxqT/jQCcVEmHlT5MbSmASRhr5h90PJYGUKzy/GnqwJrQ71ibwcpuiUwh48hIM0QjAPkVEpvD7cOR3vjStgMAstyU7URHpg84vCK9r1RmPlO/FAB6JnAYHkBqP3iYce5GFk0x1ZmvCYw21o7aj5YktTioZKTp+ZWYRcdHsZO+I2hVYbpiyvmsRWTi2qP2tH6QFDo4i42T7PCzAPRi5iCv1IGdHLvQIvpp/QWfxpO8mm5RJwAAAABJRU5ErkJggg==" alt="Intel logo"/></a>
+		<span class="links">
+		</span>
+	</div>
+</div>
+<div id="content">
+	<div class="inner">
+		<div class="explain">
+			<h1 class="title">
+				We're sorry&#8203;&mdash;&#8203;this page<br>
+				is temporarily unavailable. <span class="error" style="font-size:14px">(Error 500)</span>
+			</h1>
+			<div>We are working to correct the problem. Please try again.</div>
+			<div>To contact Intel Support, use one of the following options:</div>
+		</div>
+
+		<div class="base-links">
+			<ul>
+				<li class="first"><a href="http://failover.intel.com/failover/www.intel.com/Assets/contact-numbers.pdf">Call Us&nbsp;&gt;</a></li>
+				<li><a href="http://communities.intel.com/community/tech">Post a question to Intel Support Communities&nbsp;&gt;</a></li>
+				<li><a href="https://customercare.intel.com/?lang=en-US">Create a case with us&nbsp;&gt;</a></li>
+			</ul>
+		</div>
+		
+		<h3 style="font-size:18px; margin-top:55px;">Related Resources</h3>
+		<div class="links">
+			<ul >
+				<li class="first"><a href="https://downloadcenter.intel.com/">Download Center&nbsp;&gt;</a></li>
+				<li><a href="https://software.intel.com/en-us/support">Intel Developer Resources&nbsp;&gt;</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="footnote">
+		<!-- * Other names and brands may be claimed as the property of others. -->
+	</div>
+</div>
+<div id="footer">
+	<div class="inner">
+		&reg; Intel Corporation
+	</div>
+</div>
+</body>
+</html>
