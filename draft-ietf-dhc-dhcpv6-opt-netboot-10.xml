@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!-- This file is based on the template for creating an Internet Draft using
+     xml2rfc, which is available here: http://xml.resource.org. -->
+
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!-- One method to get references from the online citation libraries.
+     There has to be one entity for each item to be referenced.
+     An alternate method (rfc include) is described in the references. -->
+<!ENTITY RFC1350 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1350.xml">
+<!-- ENTITY RFC2090 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2090.xml" -->
+<!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY RFC2616 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2616.xml">
+<!ENTITY RFC2817 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2817.xml">
+<!ENTITY RFC2818 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2818.xml">
+<!ENTITY RFC3315 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3315.xml">
+<!ENTITY RFC3617 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3617.xml">
+<!ENTITY RFC3629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3629.xml">
+<!ENTITY RFC3986 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3986.xml">
+<!ENTITY RFC4173 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4173.xml">
+<!ENTITY RFC4578 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4578.xml">
+<!ENTITY RFC5226 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5226.xml">
+]>
+
+<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+<!-- used by XSLT processors -->
+<!-- For a complete list and description of processing instructions (PIs),
+     please see http://xml.resource.org/authoring/README.html. -->
+<!-- Below are generally applicable Processing Instructions (PIs) that most I-Ds
+     might want to use. -->
+<?rfc strict="yes" ?>
+<!-- give errors regarding ID-nits and DTD validation -->
+<!-- control the table of contents (ToC) -->
+<?rfc toc="yes"?>
+<!-- generate a ToC -->
+<?rfc tocdepth="3"?>
+<!-- the number of levels of subsections in ToC. default: 3 -->
+<!-- control references -->
+<?rfc symrefs="yes"?>
+<!-- use symbolic references tags, i.e, [RFC2119] instead of [1] -->
+<?rfc sortrefs="yes" ?>
+<!-- sort the reference entries alphabetically -->
+<!-- control vertical white space
+     (using these PIs as follows is recommended by the RFC Editor) -->
+<?rfc compact="yes" ?>
+<!-- do not start each main section on a new page -->
+<?rfc subcompact="no" ?>
+<!-- keep one blank line between list items -->
+<!-- end of list of popular I-D processing instructions -->
+<rfc category="std" docName="draft-ietf-dhc-dhcpv6-opt-netboot-10" ipr="trust200902">
+  <!-- category values: std, bcp, info, exp, and historic
+     ipr values: full3667, noModification3667, noDerivatives3667
+     you can add the attributes updates="NNNN" and obsoletes="NNNN"
+     they will automatically be output with "(if approved)" -->
+
+  <!-- ************************ FRONT MATTER ********************** -->
+
+  <front>
+    <!-- The abbreviated title is used in the page header - it is only necessary
+         if the full title is longer than 39 characters -->
+
+    <title>DHCPv6 options for network boot</title>
+
+    <author fullname="Thomas H. Huth" initials="T.H.H." surname="Huth">
+      <organization>IBM Germany Research &amp; Development GmbH</organization>
+      <address>
+        <postal>
+          <street>Schoenaicher Strasse 220</street>
+          <code>71032</code>
+          <city>Boeblingen</city>
+          <country>Germany</country>
+        </postal>
+        <phone>+49-7031-16-2183</phone>
+        <email>thuth@de.ibm.com</email>
+      </address>
+    </author>
+
+    <author fullname="Jens T. Freimann" initials="J.T.F." surname="Freimann">
+      <organization>IBM Germany Research &amp; Development GmbH</organization>
+      <address>
+        <postal>
+          <street>Schoenaicher Strasse 220</street>
+          <code>71032</code>
+          <city>Boeblingen</city>
+          <country>Germany</country>
+        </postal>
+        <phone>+49-7031-16-1122</phone>
+        <email>jfrei@de.ibm.com</email>
+      </address>
+    </author>
+
+    <author fullname="Vincent Zimmer" initials="V.Z." surname="Zimmer">
+      <organization>Intel</organization>
+      <address>
+        <postal>
+          <street>2800 Center Drive</street>
+          <code>WA 98327</code>
+          <city>DuPont</city>
+          <country>USA</country>
+        </postal>
+        <phone>+1 253 371 5667</phone>
+        <email>vincent.zimmer@intel.com</email>
+      </address>
+    </author>
+
+    <author fullname="Dave Thaler" initials="D.T." surname="Thaler">
+      <organization>Microsoft</organization>
+      <address>
+        <postal>
+          <street>One Microsoft Way</street>
+          <code>WA 98052</code>
+          <city>Redmond</city>
+          <country>USA</country>
+        </postal>
+        <phone>+1 425 703-8835</phone>
+        <email>dthaler@microsoft.com</email>
+      </address>
+    </author>
+
+    <date year="2010" />
+
+    <!-- Meta-data Declarations -->
+
+    <area>General</area>
+
+    <workgroup>DHC</workgroup>
+
+    <!-- WG name at the upperleft corner of the doc,
+         IETF is fine for individual submissions.
+         If this element is not present, the default is "Network Working Group",
+         which is used by the RFC Editor as a nod to the history of the IETF. -->
+
+    <!-- Keywords will be incorporated into HTML output
+         files in a meta tag but they have no effect on text or nroff
+         output. If you submit your draft to the RFC Editor, the
+         keywords will be used for the search engine. -->
+    <keyword>boot</keyword>
+    <keyword>IPv6</keyword>
+    <keyword>DHCPv6</keyword>
+
+    <abstract>
+      <t>
+       The Dynamic Host Configuration Protocol for IPv6 (DHCPv6) provides
+       a framework for passing configuration information to nodes on a network.
+       This document describes new options for DHCPv6 which SHOULD be used for
+       booting a node from the network.
+      </t>
+    </abstract>
+  </front>
+
+  <!-- ******************** THE MIDDLE ********************* -->
+
+  <middle>
+
+<section title="Introduction">
+<t>
+ This draft describes DHCPv6 options that SHOULD be used to provide configuration
+ information for a node that must be booted using the network, rather than
+ from local storage.
+</t>
+<t>
+ Network booting is used, for example, in some environments where
+ administrators have to maintain a large number of nodes.  By serving
+ all boot and configuration files from a central server, the effort
+ required to maintain these nodes is greatly reduced.
+</t>
+<t>
+A typical boot file would be, for example, an operating system kernel or a boot
+loader program. To be able to execute such a file, the firmware running
+on the client node must perform the following two steps (see
+<xref target="bootsteps"/>): First get all information which is required for
+downloading and executing the boot file. Second, download the boot file and
+execute it.
+</t>
+<t>
+ <figure anchor="bootsteps" title="Network Boot Sequence">
+  <artwork><![CDATA[
+                                         +------+
+                 _______________________\| DHCP |
+                / 1 Get boot file info  /|Server|
+        +------+                         +------+
+        | Host |
+        +------+                         +------+
+                \_______________________\| File |
+                  2 Download boot file  /|Server|
+                                         +------+
+  ]]></artwork>
+ </figure>
+</t>
+<t>
+The information which is required for booting over the network MUST include at
+least the details about the server on which the boot files can be found, the
+protocol to be used for the download (for example
+<xref target="RFC2616">HTTP</xref> or <xref target="RFC1350">TFTP</xref>) and
+the path and name of the boot file on the server. Additionally, the server and
+client MAY exchange information about the parameters which should be passed to
+the OS kernel or boot loader program respectively, or information about the
+supported boot environment.
+</t>
+<t>
+DHCPv6 allows client nodes to ask a DHCPv6 server for configuration
+parameters. This document provides new options which a client can request
+from the DHCPv6 server to satisfy its requirements for booting.
+It also introduces a new IANA registry for processor
+architecture types which are used by the OPTION_CLIENT_ARCH_TYPE option
+(see <xref target="clientarch"/>).
+</t>
+
+
+</section>  <!-- End of introduction -->
+
+<section title="Conventions">
+<t>
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in
+<xref target="RFC2119">RFC 2119</xref>.
+</t>
+<t>
+Terminology specific to IPv6 and DHCPv6 are used in the same way as defined
+in the "Terminology" sections of <xref target="RFC3315"/>.
+</t>
+</section>
+
+
+<section anchor="options" title="Options">
+
+<t>
+Option formats comply with DHCPv6 options per <xref target="RFC3315"/>
+(section 6). The boot-file-url option (see <xref target="booturl"/>) is
+mandatory for booting, all other options are optional.
+</t>
+
+<section anchor="booturl"
+         title="Boot File Uniform Resource Locator (URL) Option">
+
+<t>
+ The server sends this option to inform the client about an URL to a
+ boot file.
+</t>
+
+<t>
+ <figure>
+  <artwork><![CDATA[
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|       OPT_BOOTFILE_URL        |            option-len         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
+.                  boot-file-url (variable length)              .
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  ]]></artwork>
+ </figure>
+</t>
+
+<t>
+ Format description:
+ <list style="hanging" hangIndent='18'>
+  <t hangText="option-code">
+   OPT_BOOTFILE_URL (TBD1).
+  </t>
+  <t hangText="option-len">
+   Length of the boot-file-url in octets.
+  </t>
+  <t hangText="boot-file-url">
+   This string is the URL for the boot file. It MUST comply with STD 66
+   <xref target="RFC3986"/>. The string is not NUL-terminated.
+  </t>
+ </list>
+</t>
+
+<t>
+ If the host in the URL is expressed using an IPv6 address rather than a domain
+ name, the address in the URL then MUST be enclosed in "[" and "]" characters,
+ conforming to <xref target="RFC3986"/>.
+ Clients that have DNS implementations SHOULD support the use of domain names
+ in the URL.
+</t>
+
+</section>
+
+
+<section anchor="bootparam"
+         title="Boot File Parameters Option">
+
+<t>
+ This option is sent by the server to the client. It consists of multiple UTF-8
+ (<xref target="RFC3629"/>) strings. They are used to specify parameters for
+ the boot file (similar to the command line arguments in most modern operating
+ systems). For example, these parameters could be used to specify the root file
+ system of the OS kernel, or where a second stage boot loader can download its
+ configuration file from.
+</t>
+
+<t>
+ <figure>
+  <artwork><![CDATA[
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|       OPT_BOOTFILE_PARAM      |            option-len         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| param-len 1                   |                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+           parameter 1         .
+.                                        (variable length)      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+.                                                               .
+.                       <multiple Parameters>                   .
+.                                                               .
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| param-len n                   |                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+           parameter n         .
+.                                        (variable length)      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  ]]></artwork>
+ </figure>
+</t>
+
+<t>
+ Format description:
+ <list style="hanging" hangIndent='18'>
+  <t hangText="option-code">
+   OPT_BOOTFILE_PARAM (TBD2).
+  </t>
+  <t hangText="option-len">
+   Length of the Boot File Parameters option in octets (not including
+   the size of the option-code and option-len fields).
+  </t>
+  <t hangText="param-len 1...n">
+   This is a 16-bit integer which specifies the length of the following
+   parameter in octets (not including the parameter-length field).
+  </t>
+  <t hangText="parameter 1...n">
+   These UTF-8 strings are parameters needed for booting, e.g. kernel
+   parameters. The strings are not NUL-terminated.
+  </t>
+ </list>
+</t>
+
+<t>
+ When the boot firmware executes the boot file which has been
+ specified in the OPT_BOOTFILE_URL option, it MUST pass these
+ parameters, if present, in the order that they appear in the
+ OPT_BOOTFILE_PARAM option.
+</t>
+
+</section>
+
+
+<section anchor="clientarch"
+         title="Client System Architecture Type Option">
+
+<t>
+ This option provides parity with the Client System Architecture Type
+ Option defined for DHCPv4 in section 2.1 of <xref target="RFC4578"/>.
+</t>
+
+<t>
+ The format of the option is:
+ <figure>
+  <artwork><![CDATA[
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|    OPTION_CLIENT_ARCH_TYPE    |         option-len            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+.                                                               .
+.             architecture-types (variable length)              .
+.                                                               .
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  ]]></artwork>
+ </figure>
+</t>
+
+<t>
+ <list style="hanging" hangIndent='20'>
+  <t hangText="option-code">
+   OPTION_CLIENT_ARCH_TYPE (TBD3).
+  </t>
+  <t hangText="option-len">
+   Length of the "architecture-types" field in octets.
+   It MUST be an even number greater than zero.
+   See section 2.1 of <xref target="RFC4578"/> for details.
+  </t>
+  <t hangText="architecture-types">
+   A list of one or more architecture types, as specified in section 2.1
+   of <xref target="RFC4578"/>. Each architecture type identifier in
+   this list is a 16-bit value which describes the pre-boot runtime environment
+   of the client machine. A list of valid values is maintained by the IANA
+   (see <xref target="IANA"/>).
+  </t>
+ </list>
+</t>
+
+<t>
+ The client MAY use this option to send a list of supported architecture types
+ to the server, so the server can decide which boot file should be provided to
+ the client. If a client supports more than one pre-boot environment (for
+ example both, 32-bit and 64-bit executables), the most preferred architecture
+ type MUST be listed as first item, followed by the others with descending
+ priority.
+</t>
+
+<t>
+ If the client used this option in the request, the server SHOULD include this
+ option to inform the client about the pre-boot environments which are
+ supported by the boot file.
+ The list MUST only contain architecture types which have initially been
+ queried by the client. The items MUST also be listed in order of descending
+ priority.
+</t>
+
+</section>
+
+<section anchor="clientnii"
+         title="Client Network Interface Identifier Option">
+
+<t>
+ If the client supports the Universal Network Device Interface (UNDI)
+ (see <xref target="PXE21"/> and <xref target="UEFI23"/>), it may send
+ the Client Network Interface Identifier option to a DHCP server to provide
+ information about its level of UNDI support.
+</t>
+<t>
+ This option provides parity with the Client Network Interface Identifier
+ Option defined for DHCPv4 in section 2.2 of <xref target="RFC4578"/>.
+</t>
+
+<t>
+ The format of the option is:
+ <figure>
+  <artwork><![CDATA[
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           OPTION_NII          |          option-len           |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Type      |     Major     |      Minor      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  ]]></artwork>
+ </figure>
+</t>
+
+<t>
+ <list style="hanging" hangIndent='18'>
+  <t hangText="option-code">
+   OPTION_NII (TBD4).
+  </t>
+  <t hangText="option-len">
+   3
+  </t>
+  <t hangText="Type">
+   As specified in section 2.2 of <xref target="RFC4578"/>.
+  </t>
+  <t hangText="Major">
+   As specified in section 2.2 of <xref target="RFC4578"/>.
+  </t>
+  <t hangText="Minor">
+   As specified in section 2.2 of <xref target="RFC4578"/>.
+  </t>
+ </list>
+</t>
+
+<t>
+ The list of valid Type, Major and Minor values is maintained in the
+ Unified Extensible Firmware Interface specification <xref target="UEFI23"/>.
+</t>
+
+</section>
+
+</section>  <!-- end of options section -->
+
+
+<section anchor="Appearance" title="Appearance of the options">
+<t>
+ These options MUST NOT appear in DHCPv6 messages other than the types
+ Solicit, Advertise, Request, Renew, Rebind, Information-Request and Reply.
+</t>
+<t>
+ The option-codes of these options MAY appear in the Option Request Option
+ in the DHCPv6 message types Solicit, Request, Renew, Rebind,
+ Information-Request and Reconfigure.
+</t>
+</section>
+
+<section anchor="Downloadprotocol" title="Download protocol considerations">
+<t>
+ The Boot File URL option does not place any constraints on the protocol used
+ for downloading the boot file, other than that it MUST be possible to specify
+ it in a URL. For the sake of administrative simplicity, we strongly recommend
+ that, at a mininum, implementors of network boot loaders implement the
+ well-known and established hypertext transfer protocol <xref target="RFC2616"/>
+ for downloading. Please note that for IPv6, this supersedes
+ <xref target="RFC906"/> which recommended to use TFTP for downloading
+ (see <xref target="RFC3617"/> for the 'tftp' URL definition).
+</t>
+<t>
+ When using iSCSI for booting, the 'iscsi' URI is formed as defined in
+ <xref target="RFC4173"/>. The functionality attributed in RFC4173 to a
+ root path option is provided for IPv6 by the Boot File URL option instead.
+</t>
+</section>
+
+    <!-- Possibly a 'Contributors' section ... -->
+
+<section anchor="IANA" title="IANA considerations">
+
+ <t>
+  The following options need to be assigned by the IANA from the option number
+  space defined in the chapter 24 of the <xref target="RFC3315">DHCPv6 RFC</xref>.
+ </t>
+ 
+ <texttable>
+
+  <ttcol align="center">Option name</ttcol>
+  <ttcol align="center">Value</ttcol>
+  <ttcol align="center">Specified in</ttcol>
+
+  <c>OPT_BOOTFILE_URL</c>
+  <c>TBD1</c>
+  <c><xref target="booturl"/></c>
+
+  <c>OPT_BOOTFILE_PARAM</c>
+  <c>TBD2</c>
+  <c><xref target="bootparam"/></c>
+
+  <c>OPTION_CLIENT_ARCH_TYPE</c>
+  <c>TBD3</c>
+  <c><xref target="clientarch"/></c>
+
+  <c>OPTION_NII</c>
+  <c>TBD4</c>
+  <c><xref target="clientnii"/></c>
+
+ </texttable>
+
+ <t>
+  This document also introduces a new IANA registry for processor
+  architecture types.  The name of this registry shall be "Processor
+  Architecture Type".  Registry entries consist of a 16-bit integer
+  recorded in decimal format, and a descriptive name.  The initial
+  values of this registry can be found in <xref target="RFC4578"/> section 2.1.
+ </t>
+ <t>
+  The assignment policy for values shall be Expert Review (see
+  <xref target="RFC5226"/>), and any requests for values must supply the
+  descriptive name for the processor architecture type.
+ </t>
+
+</section>
+
+
+<section anchor="Security" title="Security considerations">
+<t>
+In untrusted networks, a rogue DHCPv6 server could send the new DHCPv6
+options described in this document. The booting clients could then be provided
+with a wrong URL so that either the boot fails, or even worse, the client boots
+the wrong operating system which has been provided by a malicious file server.
+To prevent this kind of attack, clients SHOULD use authentication of DHCPv6
+messages (see chapter 21. in <xref target="RFC3315"/>).
+</t>
+<t>
+Note also that DHCPv6 messages are sent unencrypted by default.
+So the boot file URL options are sent unencrypted over the network, too.
+This can become a security risk since the URLs can contain sensitive
+information like user names and passwords (for example a URL like
+"ftp://username:password@servername/path/file").
+At the current point in time, there is no possibility to send encrypted DHCPv6
+messages, so it is strongly RECOMMENDED not to use sensitive information in the
+URLs in untrusted networks (using passwords in URLs is deprecated anyway
+according to <xref target="RFC3986"/>).
+</t>
+<t>
+ Even if the DHCPv6 transaction is secured, this does not protect against
+ attacks on the boot file download channel. Consequently, we recommend
+ that either protocols like HTTPS <xref target="RFC2818"/> or TLS within
+ HTTP <xref target="RFC2817"/> are used to prevent spoofing, or that
+ the boot loader software implements a mechanism for signing
+ boot images and a configurable signing key in memory, so that if a malicious
+ image is provided, it can be detected and rejected.
+</t>
+</section>
+
+<section anchor="Acknowledgements" title="Acknowledgements">
+<t>
+ The authors would like to thank Ruth Li, Dong Wei, Kathryn Hampton,
+ Phil Dorah, Richard Chan, and Fiona Jensen for discussions that led
+ to this document.
+</t>
+<t>
+ The authors would also like to thank Ketan P. Pancholi, Alfred Hoenes, Gabriel
+ Montenegro and Ted Lemon for corrections and suggestions.
+</t>
+</section>
+
+  </middle>
+
+  <!-- ************************* BACK MATTER ********************** -->
+
+  <back>
+    <!-- References split into informative and normative -->
+
+    <!-- There are 2 ways to insert reference entries from the citation libraries:
+     1. define an ENTITY at the top, and use "ampersand character"RFC2119; here
+        (as shown)
+     2. simply use a PI "less than character"?rfc include="reference.RFC.2119.xml"?>
+        here (for I-Ds:
+        include="reference.I-D.narten-iana-considerations-rfc2434bis.xml" )
+
+     Both are cited textually in the same manner: by using xref elements.
+     If you use the PI option, xml2rfc will, by default, try to find included
+     files in the same directory as the including file. You can also define the
+     XML_LIBRARY environment variable with a value containing a set of
+     directories to search.  These can be either in the local filing system or
+     remote ones accessed by http (http://domain/dir/... ).-->
+
+    <references title="Normative References">
+      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"?-->
+      &RFC2119;
+      &RFC3315;
+      &RFC3629;
+      &RFC3986;
+      &RFC4173;
+      &RFC4578;
+      &RFC5226;
+
+      <reference anchor="PXE21"
+        target="http://www.pix.net/software/pxeboot/archive/pxespec.pdf">
+        <front>
+          <title>Preboot Execution Environment (PXE) Specification</title>
+          <author fullname="M. Johnston" initials="M.J." surname="Johnston">
+            <organization>Intel Corp.</organization>
+          </author>
+          <date month="September" year="1999"/>
+        </front>
+      </reference>
+
+      <reference anchor="UEFI23" target="http://www.uefi.org/">
+        <front>
+          <title>Unified Extensible Firmware Interface Specification,
+            Version 2.3</title>
+          <author fullname="UEFI Forum">
+            <organization>UEFI Forum</organization>
+          </author>
+          <date month="May" year="2009"/>
+        </front>
+      </reference>
+
+    </references>
+
+    <references title="Informative References">
+      &RFC1350;
+      <!-- &RFC2090; -->
+      &RFC2616;
+      &RFC2817;
+      &RFC2818;
+      &RFC3617;
+
+      <reference anchor="RFC906">
+        <front>
+          <title>Bootstrap Loading using TFTP</title>
+          <author fullname="Ross Finlayson" initials="R.F." surname="Finlayson">
+            <organization>Stanford University</organization>
+          </author>
+          <date month="June" year="1984"/>
+        </front>
+        <seriesInfo name="RFC" value="906"/>
+      </reference>
+    </references>
+
+    <!--
+    <section anchor="app-additional" title="Additional Stuff">
+      <t>This becomes an Appendix.</t>
+    </section>
+    -->
+
+    <!-- Change Log
+
+v00 2008-08-19   Initial version
+v01 2008-10-14   Remark about iSCSI booting
+v02 2008-11-18   Changed NUL-terminated fields, wording, IANA considerations
+v03 2009-02-04   Merged text with remote boot draft from V. Zimmer & D. Thaler
+v04 2009-04-06   Fixed some typos, change some wordings (stress HTTP instead of
+                 TFTP), added remark about HTTPS and fixed the FIXME in 3.3
+v05 2009-08-10   Added 'precedence' field to bootfile-URL and bootfile-param
+                 options. Shortened the "Download protocol considerations".
+v06 2009-10-26   Removed 'precedence' and multi-option approach again, as
+                 discussed on the dhc mailing list.
+v07 2009-12-19   Added more explanations to chapters "clientarch" & "clientnii"
+v08 2010-01-04   Removed UTF-8 for boot-file-url, improved wordings
+v09 2010-06-06   Changes according to IETF review
+v10 2010-07-24   Fixed Dan's and Shawn's findings
+     -->
+  </back>
+</rfc>
